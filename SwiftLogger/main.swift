@@ -8,5 +8,34 @@
 
 import Foundation
 
-print("Hello, World!")
+class Test
+{
+    func test()
+    {
+        Log.e(self,"Hello Logger ERROR")
+        Log.w(self,"Hello Logger WANRING")
+        Log.i(self,"Hello Logger INFO")
+        Log.fixme(self,"Hello Logger FIXME")
+        Log.d(self,"Hello Logger DEBUG")
+    }
+}
+struct TestStr
+{
+    func test()
+    {
+        Log.e(self,"Hello Logger ERROR")
+        Log.w(self,"Hello Logger WANRING")
+        Log.i(self,"Hello Logger INFO")
+        Log.fixme(self,"Hello Logger FIXME")
+        Log.d(self,"Hello Logger DEBUG")
+    }
+}
 
+Log.printFullInfo = false
+
+let t = Test()
+t.test()
+let ts = TestStr()
+ts.test()
+
+Log.i("All is OK")
