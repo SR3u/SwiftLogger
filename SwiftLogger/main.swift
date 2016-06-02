@@ -2,7 +2,7 @@
 //  main.swift
 //  SwiftLogger
 //
-//  Created by Sergey Rump (SPHERE) on 01.06.2016.
+//  Created by Sergey Rump on 01.06.2016.
 //  Copyright © 2016 SR3u. All rights reserved.
 //
 
@@ -17,6 +17,7 @@ class Test
         Log.i(self,"Hello Logger INFO")
         Log.fixme(self,"Hello Logger FIXME")
         Log.d(self,"Hello Logger DEBUG")
+        Log.v(self,"Hello Logger VERBOSE")
     }
 }
 struct TestStr
@@ -28,6 +29,7 @@ struct TestStr
         Log.i(self,"Hello Logger INFO")
         Log.fixme(self,"Hello Logger FIXME")
         Log.d(self,"Hello Logger DEBUG")
+        Log.v(self,"Hello Logger VERBOSE")
     }
 }
 

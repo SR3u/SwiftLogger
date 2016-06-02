@@ -2,7 +2,7 @@
 //  Log.swift
 //  SwiftLogger
 //
-//  Created by Sergey Rump (SPHERE) on 01.06.2016.
+//  Created by Sergey Rump on 01.06.2016.
 //  Copyright © 2016 SR3u. All rights reserved.
 //
 
@@ -13,6 +13,9 @@ public class Log
     // configuration
     static public var printFullInfo = true
     static public var useNSLog = true
+    static public var enableDebug = true
+    static public var enableVerbose = true
+    static public var enableInfo = true
     
     
     
@@ -86,6 +89,20 @@ public class Log
         }
         self.log(tag, message: message)
     }
+    static public func v(message: String, function: String = #function, file: String = #file, line: Int = #line)
+    {
+        self.v(nil, message,function: function,file: file,line: line)
+    }
+    static public func v(caller: Any?,_ message: String, function: String = #function, file: String = #file, line: Int = #line)
+    {
+        var tag = "VERBOSE [\(self.getTypeName(caller,function:function))]: "
+        if printFullInfo
+        {
+            tag = "VERBOSE [\(file) \(line) \(self.getTypeName(caller,function:function))]: \n"
+        }
+        self.log(tag, message: message)
+    }
+
     
     static private func getTypeName(caller:Any? = nil, function:String = "")->String
     {
