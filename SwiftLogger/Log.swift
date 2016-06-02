@@ -11,11 +11,14 @@ import Foundation
 public class Log
 {
     // configuration
-    static public var printFullInfo = true
+    static public var printFullInfo = false
     static public var useNSLog = true
+    
     static public var enableDebug = true
     static public var enableVerbose = true
     static public var enableInfo = true
+    static public var enableTrace = true
+    static public var enableFixme = true
     
     
     
@@ -71,6 +74,20 @@ public class Log
         if printFullInfo
         {
             tag = "TRACE [\(file) \(line) \(self.getTypeName(caller,function:function))]:\n"
+        }
+        self.log(tag, message: message)
+    }
+    
+    static public func fatal(message: String, function: String = #function, file: String = #file, line: Int = #line)
+    {
+        self.d(nil, message,function: function,file: file,line: line)
+    }
+    static public func fatal(caller: Any?,_ message: String, function: String = #function, file: String = #file, line: Int = #line)
+    {
+        var tag = "FATAL [\(self.getTypeName(caller,function:function))]: "
+        if printFullInfo
+        {
+            tag = "FATAL [\(file) \(line) \(self.getTypeName(caller,function:function))]:\n"
         }
         self.log(tag, message: message)
     }
