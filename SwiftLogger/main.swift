@@ -18,9 +18,11 @@ class Test
         Log.fixme(self,"Hello Logger FIXME")
         Log.d(self,"Hello Logger DEBUG")
         Log.v(self,"Hello Logger VERBOSE")
+        Log.t(self,"Hello Logger TRACE")
+        Log.fatal(self,"Hello Logger FATAL")
     }
 }
-struct TestStr
+struct TestStruct
 {
     func test()
     {
@@ -30,6 +32,8 @@ struct TestStr
         Log.fixme(self,"Hello Logger FIXME")
         Log.d(self,"Hello Logger DEBUG")
         Log.v(self,"Hello Logger VERBOSE")
+        Log.t(self,"Hello Logger TRACE")
+        Log.fatal(self,"Hello Logger FATAL")
     }
 }
 
@@ -37,7 +41,7 @@ Log.printFullInfo = false
 
 let t = Test()
 t.test()
-let ts = TestStr()
+let ts = TestStruct()
 ts.test()
 
 Log.i("All is OK")

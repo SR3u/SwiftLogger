@@ -14,6 +14,7 @@ public class Log
     static public var printFullInfo = false
     static public var useNSLog = true
     
+    static public var enableWarning = true
     static public var enableDebug = true
     static public var enableVerbose = true
     static public var enableInfo = true
