@@ -61,6 +61,20 @@ public class Log
         self.log(tag, message: message)
     }
     
+    static public func t(message: String, function: String = #function, file: String = #file, line: Int = #line)
+    {
+        self.d(nil, message,function: function,file: file,line: line)
+    }
+    static public func t(caller: Any?,_ message: String, function: String = #function, file: String = #file, line: Int = #line)
+    {
+        var tag = "TRACE [\(self.getTypeName(caller,function:function))]: "
+        if printFullInfo
+        {
+            tag = "TRACE [\(file) \(line) \(self.getTypeName(caller,function:function))]:\n"
+        }
+        self.log(tag, message: message)
+    }
+
     
     static public func fixme(message: String, function: String = #function, file: String = #file, line: Int = #line)
     {
