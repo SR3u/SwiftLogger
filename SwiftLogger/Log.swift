@@ -21,13 +21,22 @@ public class Log
     static public var enableTrace = true
     static public var enableFixme = true
     
+    static public func setAllTagsEnabled(_ value:Bool)
+    {
+        enableWarning = value
+        enableDebug = value
+        enableVerbose = value
+        enableInfo = value
+        enableTrace = value
+        enableFixme = value
+    }
     
     
-    static public func e(message: String, function: String = #function, file: String = #file, line: Int = #line)
+    static public func e(_ message: String, function: String = #function, file: String = #file, line: Int = #line)
     {
         self.e(nil, message,function: function,file: file,line: line)
     }
-    static public func e(caller: Any?,_ message: String, function: String = #function, file: String = #file, line: Int = #line)
+    static public func e(_ caller: Any?,_ message: String, function: String = #function, file: String = #file, line: Int = #line)
     {
         var tag = "ERROR [\(self.getTypeName(caller,function:function))]: "
         if printFullInfo
@@ -37,11 +46,11 @@ public class Log
         self.log(tag, message: message)
     }
     
-    static public func w(message: String, function: String = #function, file: String = #file, line: Int = #line)
+    static public func w(_ message: String, function: String = #function, file: String = #file, line: Int = #line)
     {
         self.w(nil, message,function: function,file: file,line: line)
     }
-    static public func w(caller: Any?,_ message: String, function: String = #function, file: String = #file, line: Int = #line)
+    static public func w(_ caller: Any?,_ message: String, function: String = #function, file: String = #file, line: Int = #line)
     {
         var tag = "WARN [\(self.getTypeName(caller,function:function))]: "
         if printFullInfo
@@ -51,12 +60,13 @@ public class Log
         self.log(tag, message: message)
     }
     
-    static public func d(message: String, function: String = #function, file: String = #file, line: Int = #line)
+    static public func d(_ message: String, function: String = #function, file: String = #file, line: Int = #line)
     {
         self.d(nil, message,function: function,file: file,line: line)
     }
-    static public func d(caller: Any?,_ message: String, function: String = #function, file: String = #file, line: Int = #line)
+    static public func d(_ caller: Any?,_ message: String, function: String = #function, file: String = #file, line: Int = #line)
     {
+        if !enableDebug {return}
         var tag = "DEBUG [\(self.getTypeName(caller,function:function))]: "
         if printFullInfo
         {
@@ -65,12 +75,13 @@ public class Log
         self.log(tag, message: message)
     }
     
-    static public func t(message: String, function: String = #function, file: String = #file, line: Int = #line)
+    static public func t(_ message: String, function: String = #function, file: String = #file, line: Int = #line)
     {
         self.d(nil, message,function: function,file: file,line: line)
     }
-    static public func t(caller: Any?,_ message: String, function: String = #function, file: String = #file, line: Int = #line)
+    static public func t(_ caller: Any?,_ message: String, function: String = #function, file: String = #file, line: Int = #line)
     {
+        if !enableTrace {return}
         var tag = "TRACE [\(self.getTypeName(caller,function:function))]: "
         if printFullInfo
         {
@@ -79,11 +90,11 @@ public class Log
         self.log(tag, message: message)
     }
     
-    static public func fatal(message: String, function: String = #function, file: String = #file, line: Int = #line)
+    static public func fatal(_ message: String, function: String = #function, file: String = #file, line: Int = #line)
     {
         self.d(nil, message,function: function,file: file,line: line)
     }
-    static public func fatal(caller: Any?,_ message: String, function: String = #function, file: String = #file, line: Int = #line)
+    static public func fatal(_ caller: Any?,_ message: String, function: String = #function, file: String = #file, line: Int = #line)
     {
         var tag = "FATAL [\(self.getTypeName(caller,function:function))]: "
         if printFullInfo
@@ -94,12 +105,13 @@ public class Log
     }
 
     
-    static public func fixme(message: String, function: String = #function, file: String = #file, line: Int = #line)
+    static public func fixme(_ message: String, function: String = #function, file: String = #file, line: Int = #line)
     {
         self.fixme(nil, message,function: function,file: file,line: line)
     }
-    static public func fixme(caller: Any?,_ message: String, function: String = #function, file: String = #file, line: Int = #line)
+    static public func fixme(_ caller: Any?,_ message: String, function: String = #function, file: String = #file, line: Int = #line)
     {
+        if !enableFixme {return}
         var tag = "FIXME [\(self.getTypeName(caller,function:function))]: "
         if printFullInfo
         {
@@ -108,12 +120,13 @@ public class Log
         self.log(tag, message: message)
     }
     
-    static public func i(message: String, function: String = #function, file: String = #file, line: Int = #line)
+    static public func i(_ message: String, function: String = #function, file: String = #file, line: Int = #line)
     {
         self.i(nil, message,function: function,file: file,line: line)
     }
-    static public func i(caller: Any?,_ message: String, function: String = #function, file: String = #file, line: Int = #line)
+    static public func i(_ caller: Any?,_ message: String, function: String = #function, file: String = #file, line: Int = #line)
     {
+        if !enableInfo {return}
         var tag = "INFO [\(self.getTypeName(caller,function:function))]: "
         if printFullInfo
         {
@@ -121,12 +134,13 @@ public class Log
         }
         self.log(tag, message: message)
     }
-    static public func v(message: String, function: String = #function, file: String = #file, line: Int = #line)
+    static public func v(_ message: String, function: String = #function, file: String = #file, line: Int = #line)
     {
         self.v(nil, message,function: function,file: file,line: line)
     }
-    static public func v(caller: Any?,_ message: String, function: String = #function, file: String = #file, line: Int = #line)
+    static public func v(_ caller: Any?,_ message: String, function: String = #function, file: String = #file, line: Int = #line)
     {
+        if !enableVerbose {return}
         var tag = "VERBOSE [\(self.getTypeName(caller,function:function))]: "
         if printFullInfo
         {
@@ -136,12 +150,12 @@ public class Log
     }
 
     
-    static private func getTypeName(caller:Any? = nil, function:String = "")->String
+    static private func getTypeName(_ caller:Any? = nil, function:String = "")->String
     {
         guard let caller = caller else {return "\(function)"}
         return "\(caller.dynamicType).\(function)"
     }
-    static private func log(tag: String, message: String)
+    static private func log(_ tag: String, message: String)
     {
         if useNSLog
         {

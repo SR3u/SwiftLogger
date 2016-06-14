@@ -12,32 +12,33 @@ class Test
 {
     func test()
     {
-        Log.e(self,"Hello Logger ERROR")
-        Log.w(self,"Hello Logger WANRING")
-        Log.i(self,"Hello Logger INFO")
-        Log.fixme(self,"Hello Logger FIXME")
-        Log.d(self,"Hello Logger DEBUG")
-        Log.v(self,"Hello Logger VERBOSE")
-        Log.t(self,"Hello Logger TRACE")
-        Log.fatal(self,"Hello Logger FATAL")
+        Log.e(self,"Logger ERROR")
+        Log.w(self,"Logger WANRING")
+        Log.i(self,"Logger INFO")
+        Log.fixme(self,"Logger FIXME")
+        Log.d(self,"Logger DEBUG")
+        Log.v(self,"Logger VERBOSE")
+        Log.t(self,"Logger TRACE")
+        Log.fatal(self,"Logger FATAL")
     }
 }
 struct TestStruct
 {
     func test()
     {
-        Log.e(self,"Hello Logger ERROR")
-        Log.w(self,"Hello Logger WANRING")
-        Log.i(self,"Hello Logger INFO")
-        Log.fixme(self,"Hello Logger FIXME")
-        Log.d(self,"Hello Logger DEBUG")
-        Log.v(self,"Hello Logger VERBOSE")
-        Log.t(self,"Hello Logger TRACE")
-        Log.fatal(self,"Hello Logger FATAL")
+        Log.e(self,"Logger ERROR")
+        Log.w(self,"Logger WANRING")
+        Log.i(self,"Logger INFO")
+        Log.fixme(self,"Logger FIXME")
+        Log.d(self,"Logger DEBUG")
+        Log.v(self,"Logger VERBOSE")
+        Log.t(self,"Logger TRACE")
+        Log.fatal(self,"Logger FATAL")
     }
 }
 
-Log.printFullInfo = false
+Log.setAllTagsEnabled(false)
+
 
 let t = Test()
 t.test()
